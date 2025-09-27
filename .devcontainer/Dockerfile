@@ -1,0 +1,4 @@
+FROM mcr.microsoft.com/devcontainers/base
+
+# download cook CLI
+RUN curl -L https://github.com/cooklang/cookcli/releases/latest/download/cook-x86_64-unknown-linux-gnu.tar.gz | tar -xzvf - -C /usr/local/bin
