@@ -29,7 +29,7 @@ jobs:
         uses: 'google-github-actions/auth@v3'
         with:
           project_id: crafty-airfoil-472818-s1
-          workload_identity_provider: 'principal://iam.googleapis.com/projects/126158439280/locations/global/workloadIdentityPools/github/providers/github'
+          workload_identity_provider: 'principalSet://iam.googleapis.com/projects/126158439280/locations/global/workloadIdentityPools/github/providers/github'
           service_account: 'cloud-run-deployer@crafty-airfoil-472818-s1.iam.gserviceaccount.com'
 
       - name: 'deploy'
