@@ -7,6 +7,7 @@ RUN adduser -D -u 10240 cookuser
 USER cookuser
 WORKDIR /recipes
 COPY ./recipes .
+COPY ./config ./config
 
 EXPOSE 9080
 
