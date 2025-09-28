@@ -28,6 +28,7 @@ jobs:
       - name: GCP auth
         uses: 'google-github-actions/auth@v3'
         with:
+          service_account: 'cloud-run-deployer@crafty-airfoil-472818-s1.iam.gserviceaccount.com'
           credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
 
       - name: 'deploy'
