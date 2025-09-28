@@ -5,7 +5,7 @@ RUN wget -qO- https://github.com/cooklang/cookcli/releases/latest/download/cook-
 
 RUN adduser -D -u 10240 cookuser
 USER cookuser
-WORKDIR /cook-server
+WORKDIR /recipes
 COPY ./recipes .
 
 EXPOSE 9080
