@@ -9,7 +9,7 @@ on:
 jobs:
   build-and-push:
     env: 
-      TAG: ghcr.io/${{ github.repository }}:latest
+      TAG: calebryant/cookbook-server
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,8 +17,7 @@ jobs:
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: calebryant
+          password: ${{ secrets.DOCKER_PAT }}
       - name: Build and push Docker image
-        run: docker build . --tag $TAG && docker push $TAG
+        run: docker build . --tag $TAG:latest && docker push $TAG:latest
