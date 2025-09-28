@@ -14,10 +14,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           username: calebryant
           password: ${{ secrets.DOCKER_PAT }}
+
       - name: Build and push Docker image
         run: docker build . --tag $TAG:latest && docker push $TAG:latest
+      
+      - name: 
+        uses: 'google-github-actions/auth@v3'
+        with:
+          workload_identity_provider: 'principal://iam.googleapis.com/projects/126158439280/locations/global/workloadIdentityPools/github/providers/github'
+          service_account: 'cloud-run-deployer@crafty-airfoil-472818-s1.iam.gserviceaccount.com'
+
+      - name: 
+        id: 'deploy'
+        uses: 'google-github-actions/deploy-cloudrun@v3'
+        with:
+          service: 'cookbook-server'
+          image: 'calebryant/cookbook-server:latest'
